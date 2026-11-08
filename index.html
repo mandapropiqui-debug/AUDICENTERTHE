@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#040405">
+<title>Audi Center Teresina</title>
+<meta name="description" content="Audi Center Teresina: novos, seminovos, pós-venda, peças e acessórios. Fale direto com a oficina.">
+<style>
+@font-face{font-family:Outfit;font-weight:300;font-display:swap;src:url(outfit-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:Outfit;font-weight:400;font-display:swap;src:url(outfit-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Outfit;font-weight:600;font-display:swap;src:url(outfit-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Michroma;font-weight:400;font-display:swap;src:url(michroma-latin-400-normal.woff2) format("woff2")}
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+:root{
+  --bg:#040405;--ink:#f3f3f1;--mute:#9b9ba1;--red:#f50537;--red2:#ff7d97;--deep:#8c0a22;
+  --w:min(100vw,460px);
+  --sa-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:#000;scroll-behavior:smooth}
+html.locked,html.locked body{overflow:hidden;height:100%;touch-action:none}
+body{background:#000;color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.5;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#ico-rings circle{stroke-width:var(--rw,3.4)}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.stage{position:relative;width:var(--w);margin:0 auto;min-height:100svh;background:var(--bg);overflow-x:clip}
+
+/* ---------- fixed layers (constrained to the phone column) ---------- */
+.fx{position:fixed;top:0;bottom:0;left:50%;width:var(--w);transform:translateX(-50%);pointer-events:none}
+#bg{z-index:0;background:
+  radial-gradient(120% 60% at 85% 12%,rgba(255,255,255,.07),transparent 60%),
+  radial-gradient(90% 50% at 0% 70%,rgba(255,255,255,.05),transparent 62%),
+  radial-gradient(80% 40% at 60% 100%,rgba(120,120,130,.10),transparent 70%),
+  #040405}
+#bg::after{content:"";position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+#lines{position:absolute;inset:0;width:100%;height:100%}
+#lines path{fill:none;stroke-linecap:round}
+.l-base{stroke:rgba(255,255,255,.09);stroke-width:1}
+.l-comet{stroke:#f4f4f2;stroke-width:1.8;filter:drop-shadow(0 0 4px rgba(255,255,255,.75)) drop-shadow(0 0 12px rgba(255,255,255,.35))}
+.l-comet2{stroke:var(--red);stroke-width:1.3;filter:drop-shadow(0 0 5px rgba(245,5,55,.8))}
+.main{position:relative;z-index:2}
+
+/* ---------- glass ---------- */
+.glass{position:relative;border-radius:34px 34px 14px 14px;isolation:isolate;
+  background:linear-gradient(165deg,rgba(74,74,80,.36),rgba(24,24,27,.62) 55%,rgba(10,10,12,.72));
+  -webkit-backdrop-filter:blur(20px) saturate(1.35);backdrop-filter:blur(20px) saturate(1.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.035),0 24px 46px -22px #000,0 0 30px -10px rgba(255,255,255,.10)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;z-index:-1;pointer-events:none;
+  background:conic-gradient(from var(--a),rgba(255,255,255,.10) 0%,rgba(255,255,255,.55) 10%,#fff 14%,rgba(255,255,255,.55) 18%,rgba(255,255,255,.10) 34%,rgba(255,255,255,.07) 93%,rgba(245,5,55,.95) 97%,rgba(245,5,55,0) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:spin 7s linear infinite}
+.glass::after{content:"";position:absolute;inset:0 0 auto 0;height:46%;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),transparent)}
+@keyframes spin{to{--a:360deg}}
+.glass.alt::before{animation-direction:reverse;animation-duration:9s}
+
+/* ---------- common ---------- */
+section{position:relative;padding:92px 18px 20px}
+.kick{font-family:Michroma,sans-serif;font-size:10.5px;letter-spacing:.2em;color:#b9b9bf;display:flex;align-items:center;gap:10px}
+.kick i{width:26px;height:1.5px;background:linear-gradient(90deg,var(--red),transparent);border-radius:2px}
+h2{font-weight:300;font-size:clamp(34px,10.4vw,46px);line-height:1.02;letter-spacing:-.025em;margin:14px 0 12px}
+h2 b{font-weight:600}
+.lead{color:#c3c3c8;max-width:34ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:30px;font-weight:600;font-size:15.5px;position:relative;transition:transform .25s,box-shadow .25s}
+.btn:active{transform:scale(.97)}
+.btn.red{background:linear-gradient(180deg,#fff,#d6d6da);color:#09090a;box-shadow:0 10px 26px -12px rgba(255,255,255,.45),inset 0 1px 0 #fff}
+.btn.line{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.btn svg{width:20px;height:20px;flex:none}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*90ms)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- nav ---------- */
+#nav{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;z-index:30;width:min(calc(var(--w) - 20px),420px);transform:translate(-50%,-140%);opacity:0;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s;
+  display:flex;justify-content:space-between;padding:6px;border-radius:30px 30px 14px 14px}
+#nav.on{transform:translate(-50%,0);opacity:1}
+#nav a{position:relative;flex:1;height:46px;display:grid;place-items:center;border-radius:22px;color:#a9a9ae;transition:color .3s,background .3s}
+#nav a svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#nav a.act{color:#fff;background:radial-gradient(circle at 50% 100%,rgba(255,255,255,.2),rgba(255,255,255,.03) 70%)}
+#nav a.act::after{content:"";position:absolute;left:30%;right:30%;bottom:2px;height:2px;border-radius:2px;background:var(--red);box-shadow:0 0 10px var(--red)}
+
+/* ---------- abertura (só startup) ---------- */
+#abertura{height:100svh;min-height:600px;padding:0;overflow:hidden;background:radial-gradient(70% 42% at 50% 54%,rgba(255,255,255,.075),transparent 70%),#000}
+.o-block{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 22px calc(10px + var(--sa-b))}
+.rings{width:118px;height:auto;margin-bottom:16px;overflow:visible}
+.rings circle{fill:none;stroke:#f3f3f1;stroke-width:3.1;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.5s cubic-bezier(.5,0,.2,1) forwards}
+.rings circle:nth-child(2){animation-delay:.18s}.rings circle:nth-child(3){animation-delay:.36s}.rings circle:nth-child(4){animation-delay:.54s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.h-name{font-family:Michroma,sans-serif;font-size:11px;letter-spacing:.34em;color:#d8d8dc;padding-left:.34em}
+.start{position:relative;margin-top:46px;width:98px;height:98px;border-radius:50%;display:grid;place-items:center;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+  background:radial-gradient(circle at 50% 30%,#2e2e33,#0b0b0d 70%);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(255,255,255,.1),0 14px 30px -10px #000,0 0 36px -10px rgba(255,255,255,.25);transition:transform .2s,box-shadow .3s}
+.start.hold{transform:scale(.94);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 0 1px rgba(255,255,255,.55),0 0 54px -4px rgba(255,255,255,.4)}
+.start svg{position:absolute;inset:-9px;width:116px;height:116px;transform:rotate(-90deg);overflow:visible}
+.start .tr{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2}
+.start .pg{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:345.6;stroke-dashoffset:345.6;filter:drop-shadow(0 0 5px rgba(255,255,255,.8))}
+.start span{font-family:Michroma,sans-serif;font-size:9px;line-height:1.55;letter-spacing:.14em;text-align:center;color:#ececee}
+.start span em{font-style:normal;color:var(--red)}
+.start.idle::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(255,255,255,.35);animation:ping 2.4s ease-out infinite}
+@keyframes ping{from{transform:scale(.9);opacity:1}to{transform:scale(1.55);opacity:0}}
+.hint{margin-top:22px;font-size:13.5px;color:#8d8d93;transition:opacity .5s}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.o-led{position:absolute;left:14%;right:14%;bottom:calc(7svh + var(--sa-b));height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);overflow:hidden}
+.o-led::after{content:"";position:absolute;top:0;left:-30%;width:30%;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);animation:slide 3.4s ease-in-out infinite}
+@keyframes slide{to{left:100%}}
+.flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 56%,rgba(255,255,255,.6),rgba(255,255,255,0) 62%);opacity:0;pointer-events:none}
+#abertura.on .flash{animation:flash 1.2s ease-out}
+@keyframes flash{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+
+/* ---------- capa (carro, só depois da partida) ---------- */
+#capa{height:100svh;min-height:640px;padding:0;overflow:hidden;background:#000}
+.h-img{position:absolute;left:0;right:0;top:calc(7svh + 4px);height:min(58svh,480px);overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 72%,transparent 100%)}
+.h-cam{position:absolute;left:-28%;top:0;width:156%;transform-origin:66% 58%;opacity:0;transform:scale(1.34) translateX(-6%);transition:transform 2.8s cubic-bezier(.2,.7,.2,1),opacity 1.6s}
+#capa.in .h-cam{opacity:1;transform:none;animation:breathe 14s 2.9s ease-in-out infinite alternate}
+.h-cam img{width:100%;height:auto;filter:grayscale(.95) contrast(1.2) brightness(.66)}
+@keyframes breathe{from{transform:scale(1) translateX(0)}to{transform:scale(1.045) translateX(-1.5%)}}
+.h-glow{position:absolute;left:66.5%;top:56.5%;width:22%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;opacity:0;mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(255,255,255,.95) 0 6%,rgba(255,255,255,.5) 16%,rgba(245,5,55,.16) 46%,transparent 70%)}
+#capa.in .h-glow{animation:glow 2.8s 1.2s ease-out forwards}
+@keyframes glow{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}}
+.h-vig{position:absolute;inset:0;background:radial-gradient(110% 70% at 50% 40%,transparent 40%,rgba(0,0,0,.88) 100%),linear-gradient(180deg,rgba(0,0,0,.55),transparent 22%,transparent 55%,#000 78%)}
+.h-lines{position:absolute;inset:0;width:100%;height:100%}
+.h-lines path{fill:none;stroke:#fff;stroke-width:1.3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 4px rgba(255,255,255,.7))}
+.h-lines path:nth-child(2){stroke:rgba(255,255,255,.55);stroke-width:.9}
+.h-lines path:nth-child(3){stroke:var(--red);stroke-width:1.2;filter:drop-shadow(0 0 5px rgba(245,5,55,.8))}
+#capa.in .h-lines path{animation:draw 2.6s .8s cubic-bezier(.5,0,.1,1) forwards}
+#capa.in .h-lines path:nth-child(2){animation-delay:1.2s}
+#capa.in .h-lines path:nth-child(3){animation-delay:1.6s}
+.c-block{position:absolute;left:0;right:0;bottom:calc(11svh + var(--sa-b));text-align:center;padding:0 22px}
+.c-block .h-name{margin-bottom:14px}
+.h-title{font-weight:300;font-size:clamp(36px,11vw,48px);line-height:1;letter-spacing:-.03em}
+.h-title b{font-weight:600}
+.h-sub{margin:14px auto 0;color:#bdbdc3;font-size:15.5px;max-width:30ch}
+.cue{width:26px;height:44px;border-radius:14px;border:1.5px solid rgba(255,255,255,.5);margin:26px auto 0;position:relative}
+.cue::after{content:"";position:absolute;left:50%;top:8px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:#fff;animation:cue 1.7s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(16px)}}
+
+/* ---------- chat ---------- */
+.chat{padding:20px 16px 16px;margin-top:22px}
+.c-head{display:flex;align-items:center;gap:12px;padding:2px 4px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.c-av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,#2a2a2f,#09090b);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 0 18px -6px rgba(255,255,255,.4);flex:none}
+.c-av svg{width:30px;height:auto;color:#f3f3f1;--rw:4.2}
+.c-t{font-weight:600;font-size:16px;line-height:1.2}
+.c-s{font-size:13px;color:var(--mute);display:flex;align-items:center;gap:7px;margin-top:2px}
+.dot{width:8px;height:8px;border-radius:50%;background:#555;flex:none}
+.dot.on{background:#33e07a;box-shadow:0 0 10px #33e07a;animation:blink 2s infinite}
+@keyframes blink{50%{opacity:.45}}
+.msgs{display:flex;flex-direction:column;gap:10px;padding:18px 2px 6px;min-height:150px}
+.m{max-width:86%;padding:12px 16px;font-size:15.5px;line-height:1.4;animation:pop .45s cubic-bezier(.2,.9,.3,1.2) both}
+.m.bot{align-self:flex-start;border-radius:22px 22px 22px 6px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.m.me{align-self:flex-end;border-radius:22px 22px 6px 22px;background:linear-gradient(180deg,#f4f4f6,#cdcdd2);color:#09090a;font-weight:400;box-shadow:0 8px 20px -10px rgba(255,255,255,.4)}
+.m.typing{display:flex;gap:5px;padding:15px 18px}
+.m.typing i{width:7px;height:7px;border-radius:50%;background:#bbb;animation:tp 1s infinite}
+.m.typing i:nth-child(2){animation-delay:.15s}.m.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,60%,100%{transform:none;opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0 4px}
+.chip{min-height:44px;padding:0 18px;border-radius:24px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);font-size:15px;transition:background .2s,box-shadow .2s,transform .2s;animation:pop .5s both}
+.chip:active{transform:scale(.95);background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px #fff}
+.inrow{display:flex;gap:8px;padding-top:8px;animation:pop .5s both}
+.inrow input{flex:1;min-width:0;height:52px;padding:0 20px;border-radius:28px;background:rgba(0,0,0,.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);border:0;color:var(--ink);font:inherit;font-size:16px;outline:0}
+.inrow input:focus{box-shadow:inset 0 0 0 1.5px #fff,0 0 18px -6px rgba(255,255,255,.5)}
+.inrow button{width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#fff,#d6d6da);display:grid;place-items:center;box-shadow:0 8px 20px -10px rgba(255,255,255,.5)}
+.inrow button svg{width:22px;height:22px;fill:none;stroke:#09090a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.final{display:flex;flex-direction:column;gap:10px;padding-top:12px;animation:pop .5s both}
+.final .btn{width:100%}
+.skip{font-size:14px;color:var(--mute);text-align:center;padding:4px}
+.skip u{text-decoration-color:rgba(245,5,55,.7);text-underline-offset:3px}
+.c-alt{display:flex;gap:10px;margin-top:14px}
+.c-alt a{flex:1;min-height:50px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:26px;font-size:14.5px;color:#d6d6da;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.c-alt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- pos-venda ---------- */
+.pulse{width:100%;height:46px;margin:6px 0 2px;overflow:visible}
+.pulse path{fill:none;stroke:var(--red);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 5px rgba(245,5,55,.9));animation:ecg 3.2s linear infinite}
+@keyframes ecg{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+.hours{display:flex;gap:10px;margin:20px 0 22px}
+.hours div{flex:1;padding:14px 16px;border-radius:24px 24px 10px 10px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.hours small{display:block;font-size:12.5px;color:var(--mute)}
+.hours strong{font-weight:400;font-size:15.5px}
+.svc{display:flex;flex-direction:column;gap:14px}
+.s-card{padding:22px 20px 20px;display:block}
+.s-card h3{font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.15}
+.s-card p{margin-top:6px;color:#bcbcc2;font-size:15.5px}
+.s-card .go{margin-top:16px;display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:400;font-size:15px}
+.s-card .go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.s-card:active .go svg{transform:translateX(6px)}
+.s-card.big{padding-bottom:22px}
+.tag{display:inline-block;padding:4px 12px;margin-bottom:10px;border-radius:14px 14px 6px 6px;font-size:12px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);color:#e6e6ea}
+ul.chk{list-style:none;margin-top:10px;display:grid;gap:6px}
+ul.chk li{padding-left:22px;position:relative;color:#d0d0d4;font-size:15px}
+ul.chk li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.6)}
+
+/* ---------- novos ---------- */
+.feature{position:relative;margin-top:26px;aspect-ratio:3/4;border-radius:38px 38px 16px 16px;overflow:hidden;isolation:isolate;box-shadow:0 30px 60px -26px #000,0 0 0 1px rgba(255,255,255,.08),0 0 40px -14px rgba(255,255,255,.18)}
+.feature img,.tile img{position:absolute;left:0;top:-9%;width:100%;height:118%;object-fit:cover;will-change:transform}
+.feature::after,.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.75));pointer-events:none}
+.cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;padding:12px 16px;border-radius:22px 22px 10px 10px}
+.cap b{display:block;font-weight:600;font-size:17px}
+.cap span{font-size:13.5px;color:#c9c9ce}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tile{position:relative;border-radius:28px 28px 12px 12px;overflow:hidden;isolation:isolate;aspect-ratio:4/5;box-shadow:0 18px 36px -18px #000,0 0 0 1px rgba(255,255,255,.06)}
+.tile:nth-child(2n){margin-top:30px}
+.tile:nth-child(3n){aspect-ratio:1/1.2}
+.tile em{position:absolute;left:12px;bottom:10px;z-index:2;font-style:normal;font-size:13.5px;padding:5px 12px;border-radius:14px 14px 6px 6px;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.models{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 16px}
+.models a{min-height:46px;display:inline-flex;align-items:center;padding:0 20px;border-radius:24px;background:rgba(255,255,255,.045);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);font-size:16px;transition:all .25s}
+.models a:active{background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px #fff}
+.m-title{margin-top:30px;font-weight:600;font-size:18px}
+.stack{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.stack .btn{width:100%}
+
+/* ---------- video ---------- */
+.vid{position:relative;margin:26px auto 0;width:min(78%,320px);aspect-ratio:9/16;border-radius:42px 42px 18px 18px;overflow:hidden;isolation:isolate;box-shadow:0 30px 60px -26px #000,0 0 0 1px rgba(255,255,255,.12),0 0 46px -12px rgba(255,255,255,.25)}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;z-index:3;pointer-events:none;background:conic-gradient(from var(--a),transparent 0 60%,rgba(255,255,255,.6) 78%,#fff 82%,rgba(255,255,255,.6) 86%,transparent 94%,var(--red) 98%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:spin 5s linear infinite}
+.snd{position:absolute;right:12px;bottom:12px;z-index:4;width:48px;height:48px;border-radius:50%;display:grid;place-items:center}
+.snd svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- info ---------- */
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.facts div{padding:18px 18px 16px;border-radius:26px 26px 12px 12px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.facts b{display:block;font-weight:300;font-size:34px;letter-spacing:-.03em;line-height:1}
+.facts small{color:var(--mute);font-size:13.5px}
+.about{margin-top:20px;color:#c8c8cd;display:grid;gap:12px}
+.addr{padding:24px 22px 22px;margin-top:24px}
+.addr h3{font-weight:600;font-size:20px;margin-bottom:6px}
+.rows{display:grid;gap:0;margin-top:12px}
+.rows a,.rows div{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:12px 0;border-top:1px solid rgba(255,255,255,.08);font-size:16px;overflow-wrap:anywhere}
+.rows span{color:var(--mute);font-size:13px}
+.rows a b{font-weight:400;color:#fff}
+.foot{padding:50px 18px calc(110px + var(--sa-b));text-align:center;color:#7d7d83;font-size:13.5px}
+.foot svg{display:block;width:84px;margin:0 auto 14px;color:#8d8d93;--rw:3.2}
+.foot a{color:#a0a0a6;text-decoration:underline;text-decoration-color:rgba(245,5,55,.6);text-underline-offset:3px;margin:0 6px}
+
+/* ---------- mascot ---------- */
+#mascot{position:fixed;z-index:40;bottom:calc(14px + var(--sa-b));left:0;width:52px;height:52px;pointer-events:none;opacity:0;transition:opacity .8s;will-change:transform}
+#mascot.on{opacity:1}
+.mk{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 28%,#34343a,#08080a 72%);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1.5px rgba(255,255,255,.55),0 0 22px rgba(255,255,255,.28),0 10px 20px -6px #000}
+.mk svg{width:38px;height:auto;overflow:visible;color:#fff;--rw:4.2}
+.mk{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.bub{position:absolute;bottom:64px;left:0;min-width:120px;max-width:min(210px,calc(100vw - 20px));padding:9px 14px;border-radius:22px 22px 22px 6px;font-size:14.5px;line-height:1.3;font-weight:400;text-align:left;
+  background:linear-gradient(165deg,rgba(60,60,66,.8),rgba(14,14,16,.88));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32),0 0 20px -8px rgba(255,255,255,.4),0 12px 24px -10px #000}
+.bub::after{content:"";position:absolute;bottom:-7px;left:var(--tail,20px);width:14px;height:14px;transform:rotate(45deg);background:rgba(14,14,16,.9);box-shadow:2px 2px 0 0 rgba(255,255,255,.32);border-radius:0 0 4px 0}
+.bub.sw{animation:pop .4s both}
+
+
+/* ---------- seções claras com bordas onduladas ---------- */
+section.lt{--lt:#f1f1ee;background:var(--lt);color:#0b0b0d;margin-top:58px;padding-top:70px;padding-bottom:50px}
+section.lt::before,section.lt::after{content:"";position:absolute;left:0;right:0;height:58px;background:var(--lt);pointer-events:none;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 58' preserveAspectRatio='none'><path d='M0 58V34C60 4 130 -6 210 22S370 62 460 12V58Z'/></svg>") 0 0/100% 100% no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 58' preserveAspectRatio='none'><path d='M0 58V34C60 4 130 -6 210 22S370 62 460 12V58Z'/></svg>") 0 0/100% 100% no-repeat}
+section.lt::before{top:-57px}
+section.lt::after{bottom:-57px;transform:scale(-1,-1)}
+section.lt.flip::before{transform:scaleX(-1)}
+section.lt.flip::after{transform:scaleY(-1)}
+.lt .kick{color:#6b6b72}
+.lt h2{color:#0b0b0d}
+.lt .lead,.lt .about,.lt .addr p{color:#4a4a50!important}
+.lt .glass{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 26px 40px -28px rgba(0,0,0,.4),0 2px 6px -2px rgba(0,0,0,.08)}
+.lt .glass::after{display:none}
+.lt .glass::before{background:conic-gradient(from var(--a),rgba(0,0,0,.05) 0%,rgba(0,0,0,.35) 10%,#0b0b0d 14%,rgba(0,0,0,.35) 18%,rgba(0,0,0,.05) 34%,rgba(0,0,0,.04) 93%,rgba(245,5,55,.95) 97%,rgba(245,5,55,0) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lt .s-card p{color:#55555b}
+.lt .go{color:#0b0b0d!important}
+.lt .tag{background:#ececea;color:#222;box-shadow:none}
+.lt ul.chk li{color:#33333a}
+.lt ul.chk li::before{background:#0b0b0d;box-shadow:none}
+.lt .hours div,.lt .facts div{background:#fff;box-shadow:0 14px 26px -20px rgba(0,0,0,.35)}
+.lt .hours small,.lt .facts small,.lt .rows span{color:#77777e}
+.lt .rows a,.lt .rows div{border-top-color:rgba(0,0,0,.09)}
+.lt .rows a b{color:#0b0b0d}
+.lt .btn.red{background:#0b0b0d;color:#fff;box-shadow:0 12px 24px -14px rgba(0,0,0,.6)}
+.lt .btn.line{background:transparent;color:#0b0b0d;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.foot{padding-top:84px}
+/* só o startup no começo */
+#bg{opacity:0;transition:opacity 1.4s}
+html.go #bg{opacity:1}
+#nav,#mascot{visibility:hidden}
+#nav.on,#mascot.on{visibility:visible}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ico-rings" viewBox="0 0 117 40"><circle cx="20" cy="20" r="18"/><circle cx="45.5" cy="20" r="18"/><circle cx="71" cy="20" r="18"/><circle cx="96.5" cy="20" r="18"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 8-8h0a8 8 0 0 1 8 8v0a8 8 0 0 1-8 8H5l1.6-3.2A8 8 0 0 1 4 12Z"/><path d="M9 11h6M9 14.5h3.5"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 6a4 4 0 0 0 4.9 5l-8.8 8.8a2.1 2.1 0 0 1-3-3L16.4 8a4 4 0 0 0-1.9-2Z"/><path d="M15 3.6a4 4 0 0 1 5.4 5.4L18 6.6 15.4 4Z"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M3.5 15.5v-3l2-4.5a2 2 0 0 1 1.8-1.2h9.4a2 2 0 0 1 1.8 1.2l2 4.5v3"/><path d="M2.8 15.5h18.4v2.3a1 1 0 0 1-1 1H18a1 1 0 0 1-1-1v-.8H7v.8a1 1 0 0 1-1 1H3.8a1 1 0 0 1-1-1Z"/><circle cx="7.3" cy="13" r=".6"/><circle cx="16.7" cy="13" r=".6"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h8.5M17 12v3M20.5 12v2"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M5.6 18.4l1.7-1.7M16.7 7.3l1.7-1.7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-5.6 6.5-11a6.5 6.5 0 0 0-13 0c0 5.4 6.5 11 6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-5.5 16-3-6.5Z"/><path d="m11.5 13.5 3.5-4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.3a10 10 0 0 0 6.2 6.2l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-4.1A8.2 8.2 0 1 1 8.3 18.9Z"/><path d="M9.2 8.8c.2 2.8 2.7 5.2 5.9 6l1-1.4-2-1-1 .7a4.5 4.5 0 0 1-1.9-1.9l.7-1-1-2Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="3"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5Z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5Z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></symbol>
+  </defs>
+</svg>
+
+<div class="fx" id="bg">
+  <svg id="lines" viewBox="0 0 400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="l-base" d="M-20 80 C 120 140, 60 330, 230 400 S 330 640, 430 700"/>
+    <path class="l-base" d="M430 160 C 300 230, 350 420, 170 500 S 70 760, -20 820"/>
+    <path class="l-base" d="M-20 520 C 90 470, 210 600, 430 470"/>
+    <path id="c1" class="l-comet" pathLength="1" d="M-20 80 C 120 140, 60 330, 230 400 S 330 640, 430 700"/>
+    <path id="c2" class="l-comet" pathLength="1" d="M430 160 C 300 230, 350 420, 170 500 S 70 760, -20 820"/>
+    <path id="c3" class="l-comet2" pathLength="1" d="M-20 520 C 90 470, 210 600, 430 470"/>
+  </svg>
+</div>
+
+<nav id="nav" class="glass" aria-label="Atalhos">
+  <a href="#oficina" data-t="oficina" aria-label="Oficina direta"><svg><use href="#i-chat"/></svg></a>
+  <a href="#posvenda" data-t="posvenda" aria-label="Pós-venda"><svg><use href="#i-wrench"/></svg></a>
+  <a href="#novos" data-t="novos" aria-label="Novos"><svg><use href="#i-car"/></svg></a>
+  <a href="#seminovos" data-t="seminovos" aria-label="Seminovos"><svg><use href="#i-key"/></svg></a>
+  <a href="#pecas" data-t="pecas" aria-label="Peças e acessórios"><svg><use href="#i-gear"/></svg></a>
+  <a href="#onde" data-t="onde" aria-label="Onde estamos"><svg><use href="#i-pin"/></svg></a>
+</nav>
+
+<div id="mascot" aria-hidden="true">
+  <div class="bub" id="bub">Bem-vindo à Audi Center Teresina!</div>
+  <div class="mk"><svg viewBox="0 0 117 40"><use href="#ico-rings"/></svg></div>
+</div>
+
+<div class="stage">
+<main class="main">
+
+<!-- ================= ABERTURA (só o startup) ================= -->
+<section id="abertura" data-s="abertura">
+  <div class="o-block">
+    <svg class="rings" viewBox="0 0 117 40" aria-label="Audi"><circle pathLength="1" cx="20" cy="20" r="18"/><circle pathLength="1" cx="45.5" cy="20" r="18"/><circle pathLength="1" cx="71" cy="20" r="18"/><circle pathLength="1" cx="96.5" cy="20" r="18"/></svg>
+    <div class="h-name">AUDI CENTER TERESINA</div>
+    <button class="start idle" id="start" aria-label="Segure para dar a partida e entrar">
+      <svg viewBox="0 0 110 110"><circle class="tr" cx="55" cy="55" r="55"/><circle class="pg" id="pg" cx="55" cy="55" r="55"/></svg>
+      <span>START<br><em>ENGINE</em><br>STOP</span>
+    </button>
+    <div class="hint" id="hint">Toque e segure para dar a partida</div>
+  </div>
+  <div class="o-led"></div>
+  <div class="flash"></div>
+</section>
+
+<!-- ================= CAPA (carro) ================= -->
+<section id="capa" data-s="capa">
+  <div class="h-img">
+    <div class="h-cam"><img src="hero.jpg" alt="Audi preto em estrada com montanhas ao fundo"><div class="h-glow"></div></div>
+    <svg class="h-lines" viewBox="0 0 400 420" preserveAspectRatio="none" aria-hidden="true">
+      <path pathLength="1" d="M-10 330 C 90 300, 140 360, 230 330 S 360 280, 410 300"/>
+      <path pathLength="1" d="M-10 360 C 120 340, 190 390, 280 350 S 380 320, 410 330"/>
+      <path pathLength="1" d="M-10 300 C 60 290, 120 310, 190 296 S 330 250, 410 262"/>
+    </svg>
+    <div class="h-vig"></div>
+  </div>
+  <div class="c-block">
+    <div class="h-name">AUDI CENTER TERESINA</div>
+    <h1 class="h-title">Do showroom<br>à <b>oficina.</b></h1>
+    <p class="h-sub">Compre, agende e fale direto com a equipe, tudo em um só lugar.</p>
+    <div class="cue" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ================= OFICINA DIRETA ================= -->
+<section id="oficina" data-s="oficina">
+  <div class="kick rv"><i></i>NOVO · OFICINA DIRETA</div>
+  <h2 class="rv" style="--d:1">Seu Audi com<br>problema? <b>Fale agora.</b></h2>
+  <p class="lead rv" style="--d:2">Conte o que está acontecendo e a mensagem já chega organizada para a equipe da oficina, direto no WhatsApp.</p>
+
+  <div class="glass chat rv" style="--d:3" id="chat">
+    <div class="c-head">
+      <div class="c-av"><svg viewBox="0 0 117 40"><use href="#ico-rings"/></svg></div>
+      <div>
+        <div class="c-t">Oficina Audi Center Teresina</div>
+        <div class="c-s"><i class="dot" id="odot"></i><span id="ostat">Verificando horário…</span></div>
+      </div>
+    </div>
+    <div class="msgs" id="msgs" aria-live="polite"></div>
+    <div id="ctrl"></div>
+  </div>
+
+  <div class="c-alt rv" style="--d:1">
+    <a href="tel:+558632339100"><svg><use href="#i-phone"/></svg>Ligar agora</a>
+    <a href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20revis%C3%A3o%20no%20Audi%20Center%20Teresina." target="_blank" rel="noopener"><svg><use href="#i-wrench"/></svg>Agendar revisão</a>
+  </div>
+</section>
+
+<!-- ================= PÓS-VENDA ================= -->
+<section id="posvenda" data-s="posvenda" class="lt" style="--lt:#f3f3f0">
+  <div class="kick rv"><i></i>PÓS-VENDA</div>
+  <h2 class="rv" style="--d:1">Seu Audi nas mãos de especialistas.</h2>
+  <svg class="pulse rv" viewBox="0 0 360 46" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 26 H110 L124 26 L134 8 L148 42 L160 18 L170 26 H360"/></svg>
+  <p class="lead rv">Siga tranquilo. Faça o agendamento da sua revisão e deixe o resto com a nossa oficina.</p>
+
+  <div class="hours rv">
+    <div><small>Seg a sex</small><strong>08h às 18h</strong></div>
+    <div><small>Sábado</small><strong>08h às 12h</strong></div>
+  </div>
+
+  <div class="svc">
+    <a class="glass s-card big rv" href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20agendar%20a%20revis%C3%A3o%20do%20meu%20Audi." target="_blank" rel="noopener">
+      <span class="tag">Agendamento</span>
+      <h3>Agendamento de oficina</h3>
+      <p>Escolha o melhor dia para a revisão do seu Audi.</p>
+      <span class="go">Agendar pelo WhatsApp <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass alt s-card rv" href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20Audi%20Sempre%20Novo." target="_blank" rel="noopener">
+      <h3>Audi Sempre Novo</h3>
+      <p>Pacote para manter o seu Audi em dia.</p>
+      <ul class="chk"><li>Troca de óleo e filtro de óleo</li><li>Filtro de ar do motor e filtro de cabine</li><li>Alinhamento e balanceamento</li></ul>
+      <span class="go">Consultar condições <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass s-card rv" href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20Audi%20Basic%20Service." target="_blank" rel="noopener">
+      <h3>Audi Basic Service</h3>
+      <p>Seu Audi novo de novo.</p>
+      <span class="go">Saber mais <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass alt s-card rv" href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20as%20Revis%C3%B5es%20Planejadas." target="_blank" rel="noopener">
+      <h3>Revisões Planejadas</h3>
+      <p>Fale com a equipe e planeje a revisão do seu Audi.</p>
+      <span class="go">Saber mais <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass s-card rv" href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20Audi%20Connect%20Plug%20and%20Play." target="_blank" rel="noopener">
+      <h3>Audi Connect Plug &amp; Play</h3>
+      <p>Saiba mais com a equipe da oficina.</p>
+      <span class="go">Saber mais <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass alt s-card rv" href="https://wa.me/558632339100?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20Audi%20Carlife." target="_blank" rel="noopener">
+      <h3>Audi Carlife</h3>
+      <p>Fale com a equipe e saiba como funciona.</p>
+      <span class="go">Saber mais <svg><use href="#i-arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= NOVOS ================= -->
+<section id="novos" data-s="novos">
+  <div class="kick rv"><i></i>NOVOS 0 KM</div>
+  <h2 class="rv" style="--d:1">O próximo capítulo<br>da sua história.</h2>
+  <p class="lead rv" style="--d:2">Conheça de perto o Audi Q3 Launch Edition 2026 no nosso showroom.</p>
+
+  <div class="feature rv" style="--d:1">
+    <img data-par="0.12" src="q3_02.jpg" alt="Audi Q3 Launch Edition de frente no showroom" loading="lazy">
+    <div class="glass cap"><b>Audi Q3 Launch Edition</b><span>2026 · Direto no showroom de Teresina</span></div>
+  </div>
+  <div class="mosaic">
+    <div class="tile rv"><img data-par="0.1" src="q3_01.jpg" alt="Grade e anéis do Q3" loading="lazy"><em>Grade e anéis</em></div>
+    <div class="tile rv" style="--d:1"><img data-par="0.16" src="q3_07.jpg" alt="Traseira do Q3" loading="lazy"><em>Traseira</em></div>
+    <div class="tile rv"><img data-par="0.12" src="q3_03.jpg" alt="Cockpit do Q3" loading="lazy"><em>Cockpit</em></div>
+    <div class="tile rv" style="--d:1"><img data-par="0.1" src="q3_04.jpg" alt="Bancos e teto solar do Q3" loading="lazy"><em>Bancos e teto</em></div>
+    <div class="tile rv"><img data-par="0.14" src="q3_06.jpg" alt="Interior do Q3" loading="lazy"><em>Interior</em></div>
+    <div class="tile rv" style="--d:1"><img data-par="0.1" src="q3_05.jpg" alt="Acabamento do painel do Q3" loading="lazy"><em>Acabamento</em></div>
+  </div>
+
+  <div class="m-title rv">Escolha o seu modelo</div>
+  <div class="models rv" id="models"></div>
+  <div class="stack rv">
+    <a class="btn red" href="https://wa.me/5586994056394?text=Ol%C3%A1%2C%20quero%20agendar%20um%20test%20drive%20no%20Audi%20Center%20Teresina." target="_blank" rel="noopener"><svg><use href="#i-car"/></svg>Agendar test drive</a>
+    <a class="btn line" href="https://wa.me/5586994056394?text=Ol%C3%A1%2C%20quero%20falar%20com%20o%20time%20de%20vendas." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Falar com vendas</a>
+    <a class="btn line" href="https://www.instagram.com/audi.center.teresina/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>Ofertas do mês no Instagram</a>
+  </div>
+</section>
+
+<!-- ================= SHOWROOM (vídeo) ================= -->
+<section id="showroom" data-s="novos" style="padding-top:70px">
+  <div class="kick rv"><i></i>SHOWROOM</div>
+  <h2 class="rv" style="--d:1">Venha conhecer.</h2>
+  <div class="vid rv" style="--d:1">
+    <video id="vid" src="showroom.mp4" poster="showroom_poster.jpg" muted loop playsinline preload="metadata"></video>
+    <button class="snd glass" id="snd" aria-label="Ligar o som"><svg><use href="#i-mute"/></svg></button>
+  </div>
+</section>
+
+<!-- ================= SEMINOVOS ================= -->
+<section id="seminovos" data-s="seminovos" class="lt flip" style="--lt:#dededa">
+  <div class="kick rv"><i></i>SEMINOVOS</div>
+  <h2 class="rv" style="--d:1">Audi Approved <b>:plus</b></h2>
+  <p class="lead rv" style="--d:2">Encontre o seu Audi Approved :plus nas oportunidades da concessionária.</p>
+  <a class="glass s-card big rv" style="margin-top:22px" href="https://audicenterteresina.com.br/seminovos" target="_blank" rel="noopener">
+    <h3>Ver oportunidades</h3>
+    <p>Seminovos selecionados, no site da Audi Center Teresina.</p>
+    <span class="go">Abrir seminovos <svg><use href="#i-arrow"/></svg></span>
+  </a>
+</section>
+
+<!-- ================= PEÇAS ================= -->
+<section id="pecas" data-s="pecas">
+  <div class="kick rv"><i></i>PEÇAS E ACESSÓRIOS</div>
+  <h2 class="rv" style="--d:1">Originais,<br>direto da concessionária.</h2>
+  <div class="svc" style="margin-top:24px">
+    <a class="glass s-card rv" href="https://wa.me/5586994048150?text=Ol%C3%A1%2C%20preciso%20de%20uma%20pe%C3%A7a%20para%20o%20meu%20Audi." target="_blank" rel="noopener">
+      <h3>Peças</h3>
+      <p>Faça o pedido da sua peça com o time de peças.</p>
+      <span class="go">Pedir pelo WhatsApp <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass alt s-card rv" href="https://wa.me/5586994048150?text=Ol%C3%A1%2C%20quero%20conhecer%20os%20acess%C3%B3rios%20para%20o%20meu%20Audi." target="_blank" rel="noopener">
+      <h3>Acessórios</h3>
+      <p>Personalize o seu Audi com acessórios originais.</p>
+      <span class="go">Consultar acessórios <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="glass s-card rv" href="https://audicenterteresina.com.br/audi-collection" target="_blank" rel="noopener">
+      <h3>Audi Collection</h3>
+      <p>Toda a coleção, nas concessionárias Audi de todo o Brasil e na loja oficial da Audi no Mercado Livre.</p>
+      <span class="go">Ver coleção <svg><use href="#i-arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= QUEM SOMOS + ONDE ================= -->
+<section id="onde" data-s="onde" class="lt" style="--lt:#ebebe8">
+  <div class="kick rv"><i></i>QUEM SOMOS</div>
+  <h2 class="rv" style="--d:1">Audi em Teresina<br>desde 2014.</h2>
+  <div class="about rv">
+    <p>A Audi Center Teresina faz parte do Grupo G4R, um dos maiores grupos automotivos do Brasil.</p>
+    <p>Instalações modernas e aconchegantes, seguindo todos os padrões da marca, com veículos 0 km, peças e acessórios originais e serviços de oficina.</p>
+  </div>
+  <div class="facts rv">
+    <div><b>2014</b><small>início das atividades</small></div>
+    <div><b>G4R</b><small>grupo automotivo</small></div>
+  </div>
+
+  <div class="glass addr rv">
+    <h3>Onde estamos</h3>
+    <p style="color:#c3c3c8">Av. João XXIII, 1571 · Jóquei<br>Teresina, PI · 64049-010</p>
+    <div class="rows">
+      <div><span>Showroom</span><b style="font-weight:400">Seg a sex 08h–18h · Sáb 08h–12h</b></div>
+      <div><span>Oficina</span><b style="font-weight:400">Seg a sex 08h–18h · Sáb 08h–12h</b></div>
+      <a href="tel:+558632339100"><span>Telefone</span><b>(86) 3233-9100</b></a>
+      <a href="https://wa.me/5586994056394" target="_blank" rel="noopener"><span>WhatsApp vendas</span><b>(86) 99405-6394</b></a>
+      <a href="https://wa.me/5586994048150" target="_blank" rel="noopener"><span>WhatsApp peças</span><b>(86) 99404-8150</b></a>
+      <a href="mailto:vendas@audicenterteresina.com.br"><span>Vendas</span><b>vendas@audicenterteresina.com.br</b></a>
+      <a href="mailto:agendamento@audicenterteresina.com.br"><span>Agendamento</span><b>agendamento@audicenterteresina.com.br</b></a>
+    </div>
+    <div class="stack">
+      <a class="btn red" href="https://www.google.com/maps/search/?api=1&query=Audi+Center+Teresina+Av.+Jo%C3%A3o+XXIII+1571+Teresina" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Abrir no mapa</a>
+      <a class="btn line" href="https://audicenterteresina.com.br/" target="_blank" rel="noopener">Site oficial</a>
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  <svg viewBox="0 0 117 40"><use href="#ico-rings"/></svg>
+  Audi Center Teresina · Grupo G4R<br>
+  <a href="https://audicenterteresina.com.br/compliance" target="_blank" rel="noopener">Compliance</a>
+  <a href="https://audicenterteresina.com.br/politica-de-privacidade" target="_blank" rel="noopener">Privacidade</a>
+</div>
+
+</main>
+</div>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const html=document.documentElement;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let started=false;
+html.classList.add('locked');
+scrollTo(0,0);
+
+/* ---------- opening: hold to start ---------- */
+const start=$('#start'), pg=$('#pg'), hint=$('#hint'), abertura=$('#abertura');
+const LEN=345.6, HOLD=reduce?150:950;
+let t0=0, raf=0, holding=false;
+function frame(now){
+  if(!holding) return;
+  const p=Math.min(1,(now-t0)/HOLD);
+  pg.style.strokeDashoffset=LEN*(1-p);
+  if(navigator.vibrate&&p>.5&&!frame.v){frame.v=1;navigator.vibrate(12)}
+  if(p>=1){ignite();return}
+  raf=requestAnimationFrame(frame);
+}
+function down(e){
+  if(started) return;
+  e.preventDefault();
+  holding=true;frame.v=0;t0=performance.now();
+  start.classList.add('hold');start.classList.remove('idle');
+  hint.textContent='Segurando…';
+  raf=requestAnimationFrame(frame);
+}
+function up(){
+  if(started||!holding) return;
+  holding=false;cancelAnimationFrame(raf);
+  start.classList.remove('hold');start.classList.add('idle');
+  pg.style.transition='stroke-dashoffset .35s';pg.style.strokeDashoffset=LEN;
+  setTimeout(()=>pg.style.transition='',380);
+  hint.textContent='Segure mais um pouco para dar a partida';
+  start.classList.remove('shake');void start.offsetWidth;start.classList.add('shake');
+}
+start.addEventListener('pointerdown',down);
+['pointerup','pointercancel','pointerleave'].forEach(ev=>start.addEventListener(ev,up));
+start.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat)down(e)});
+start.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')up()});
+start.addEventListener('contextmenu',e=>e.preventDefault());
+
+function ignite(){
+  if(started) return;
+  started=true;holding=false;
+  start.classList.remove('hold','idle');pg.style.strokeDashoffset=0;
+  abertura.classList.add('on');
+  hint.textContent='Motor ligado';
+  if(navigator.vibrate)navigator.vibrate([20,40,30]);
+  setTimeout(()=>{
+    html.classList.remove('locked');html.classList.add('go');
+    $('#nav').classList.add('on');
+    $('#mascot').classList.add('on');
+    $('#capa').scrollIntoView({behavior:reduce?'auto':'smooth'});
+    say('capa',true);
+  },1100);
+}
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){$('#capa').classList.add('in');o.disconnect()}},{threshold:.45}).observe($('#capa'));
+
+/* ---------- scroll-linked red lines + parallax ---------- */
+const c1=$('#c1'),c2=$('#c2'),c3=$('#c3');
+const par=$$('[data-par]');
+let tick=false;
+function onScroll(){
+  if(tick) return; tick=true;
+  requestAnimationFrame(()=>{
+    tick=false;
+    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    const p=Math.min(1,Math.max(0,scrollY/max));
+    c1.style.strokeDasharray='.07 .93';c1.style.strokeDashoffset=String(.07-p*1.0);
+    c2.style.strokeDasharray='.06 .94';c2.style.strokeDashoffset=String(.06-(1-p)*.9-.05);
+    c3.style.strokeDasharray='.1 .9';c3.style.strokeDashoffset=String(.1-((p*2.4)%1));
+    const vh=innerHeight;
+    for(const el of par){
+      const r=el.parentElement.getBoundingClientRect();
+      if(r.bottom<-100||r.top>vh+100) continue;
+      const k=parseFloat(el.dataset.par);
+      const off=((r.top+r.height/2)-vh/2)*-k;
+      el.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)';
+    }
+  });
+}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+$$('.rv').forEach(el=>io.observe(el));
+
+/* ---------- active section: nav + mascot speech ---------- */
+const lines={
+  capa:'Bem-vindo à Audi Center Teresina!',
+  oficina:'Barulho estranho? Me conta aqui.',
+  posvenda:'Seu Audi merece mão de especialista.',
+  novos:'Qual vai ser o próximo da garagem?',
+  seminovos:'Veja os Audi Approved :plus.',
+  pecas:'Peça original, direto da concessionária.',
+  onde:'Av. João XXIII, 1571. Te espero!'
+};
+const bub=$('#bub'); let cur='';
+function say(key,force){
+  if(key===cur&&!force) return;
+  cur=key;
+  bub.classList.remove('sw');void bub.offsetWidth;
+  bub.textContent=lines[key]||'';bub.classList.add('sw');
+}
+const navMap={abertura:null};
+const links=$$('#nav a');
+const sio=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const key=e.target.dataset.s;
+    links.forEach(a=>a.classList.toggle('act',a.dataset.t===key));
+    if(started) say(key);
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+$$('section[data-s]').forEach(s=>sio.observe(s));
+
+/* ---------- mascot crossing the screen ---------- */
+const mas=$('#mascot'), W=()=>Math.min(innerWidth,460), off=()=>(innerWidth-W())/2;
+let mx=-70, last=0;
+function mloop(ts){
+  const dt=Math.min(.05,(ts-last)/1000||0);last=ts;
+  if(started&&!reduce){
+    mx+=dt*42;
+    if(mx>W()+10) mx=-70;
+  }else if(reduce) mx=W()-76;
+  const x=off()+mx;
+  mas.style.transform='translate3d('+x.toFixed(1)+'px,0,0)';
+  // keep bubble fully on screen
+  const bw=bub.offsetWidth, vw=innerWidth, pad=10;
+  let bx=0; const left=x;
+  if(left+bx<pad) bx=pad-left;
+  if(left+bx+bw>vw-pad) bx=vw-pad-bw-left;
+  bub.style.transform='translateX('+bx.toFixed(1)+'px)';
+  bub.style.setProperty('--tail',Math.max(14,Math.min(bw-28,28-bx))+'px');
+  requestAnimationFrame(mloop);
+}
+requestAnimationFrame(mloop);
+
+/* ---------- models ---------- */
+const models=['A3','A4','A5','A6','Q3','Q5','Q6 e-tron','Q7','Q8','Q8 e-tron','e-tron','e-tron GT'];
+$('#models').innerHTML=models.map(m=>'<a target="_blank" rel="noopener" href="https://wa.me/5586994056394?text='+encodeURIComponent('Olá, tenho interesse no Audi '+m+'. Pode me passar mais informações?')+'">'+m+'</a>').join('');
+
+/* ---------- showroom video ---------- */
+const vid=$('#vid'), snd=$('#snd');
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){vid.play().catch(()=>{})}else vid.pause()}),{threshold:.5}).observe(vid);
+snd.addEventListener('click',()=>{vid.muted=!vid.muted;snd.querySelector('use').setAttribute('href',vid.muted?'#i-mute':'#i-sound');snd.setAttribute('aria-label',vid.muted?'Ligar o som':'Desligar o som')});
+
+/* ---------- opening hours (Fortaleza time) ---------- */
+function openNow(){
+  const p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Fortaleza',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;
+  const d=g('weekday'), m=(+g('hour')%24)*60+(+g('minute'));
+  if(['Mon','Tue','Wed','Thu','Fri'].includes(d)) return m>=480&&m<1080;
+  if(d==='Sat') return m>=480&&m<720;
+  return false;
+}
+const on=openNow();
+$('#odot').classList.toggle('on',on);
+$('#ostat').textContent=on?'Equipe online agora':'Fora do expediente';
+
+/* ---------- chat flow ---------- */
+const msgs=$('#msgs'), ctrl=$('#ctrl');
+const state={nome:'',modelo:'',problema:'',detalhe:''};
+const WA='5586'+'32339100';
+function bot(text,cb,ms=700){
+  const t=document.createElement('div');t.className='m bot typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);
+  setTimeout(()=>{t.className='m bot';t.textContent=text;cb&&cb()},reduce?0:ms);
+}
+function me(text){const d=document.createElement('div');d.className='m me';d.textContent=text;msgs.appendChild(d)}
+function chips(list,pick){
+  ctrl.innerHTML='';
+  const w=document.createElement('div');w.className='chips';
+  list.forEach((l,i)=>{const b=document.createElement('button');b.className='chip';b.style.animationDelay=(i*40)+'ms';b.textContent=l;b.onclick=()=>{ctrl.innerHTML='';me(l);pick(l)};w.appendChild(b)});
+  ctrl.appendChild(w);
+}
+function input(ph,cb,opt){
+  ctrl.innerHTML='';
+  const r=document.createElement('form');r.className='inrow';
+  r.innerHTML='<input type="text" autocomplete="off" enterkeyhint="send" placeholder="'+ph+'" aria-label="'+ph+'"><button type="submit" aria-label="Enviar"><svg><use href="#i-send"/></svg></button>';
+  r.onsubmit=e=>{e.preventDefault();const v=r.querySelector('input').value.trim();if(!v&&!opt) return;ctrl.innerHTML='';if(v)me(v);cb(v)};
+  ctrl.appendChild(r);
+  if(opt){const s=document.createElement('button');s.className='skip';s.innerHTML='<u>Pular</u>';s.type='button';s.onclick=()=>{ctrl.innerHTML='';me('Pular');cb('')};ctrl.appendChild(s)}
+}
+function s0(){
+  bot('Olá! Eu organizo o que o seu Audi está sentindo e levo direto para a equipe da oficina. Como posso te chamar?',()=>input('Seu nome',v=>{state.nome=v.split(' ')[0];s1()}),600);
+}
+function s1(){
+  bot('Prazer, '+state.nome+'! Qual é o seu Audi?',()=>chips(['A3','A4','A5','A6','Q3','Q5','Q7','Q8','e-tron','Outro'],v=>{state.modelo=v;s2()}));
+}
+function s2(){
+  bot('O que está acontecendo com ele?',()=>chips(['Barulho estranho','Luz acesa no painel','Revisão ou manutenção','Freios ou pneus','Bateria ou parte elétrica','Ar-condicionado','Outro'],v=>{state.problema=v;s3()}));
+}
+function s3(){
+  bot('Quer contar mais algum detalhe? Quando começou, em que situação acontece…',()=>input('Detalhes (opcional)',v=>{state.detalhe=v;s4()},true));
+}
+function s4(){
+  const txt='Olá, Audi Center Teresina! Sou '+state.nome+'. Tenho um Audi '+state.modelo+' e preciso de ajuda na oficina: '+state.problema.toLowerCase()+'.'+(state.detalhe?' '+state.detalhe+(/[.!?]$/.test(state.detalhe)?'':'.'):'')+' Podem me atender?';
+  bot(on?'Pronto! Montei a sua mensagem. É só enviar para a equipe da oficina.':'Pronto! Montei a sua mensagem. Estamos fora do expediente, mas a equipe responde assim que abrir.',()=>{
+    ctrl.innerHTML='';
+    const f=document.createElement('div');f.className='final';
+    f.innerHTML='<a class="btn red" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent(txt)+'"><svg><use href="#i-wa"/></svg>Enviar para a oficina</a><button class="skip" type="button"><u>Começar de novo</u></button>';
+    f.querySelector('.skip').onclick=()=>{msgs.innerHTML='';ctrl.innerHTML='';Object.assign(state,{nome:'',modelo:'',problema:'',detalhe:''});s0()};
+    ctrl.appendChild(f);
+  });
+}
+// start chat when it first becomes visible
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting&&started){o.disconnect();s0()}},{threshold:.3}).observe($('#chat'));
+// if user scrolled before ignition completes, retry once started
+const wait=setInterval(()=>{if(started){clearInterval(wait);const r=$('#chat').getBoundingClientRect();if(!msgs.children.length&&r.top<innerHeight&&r.bottom>0)s0()}},400);
+})();
+</script>
+</body>
+</html>
